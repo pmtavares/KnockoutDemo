@@ -14,6 +14,12 @@
 *@
 <h3>Part 2</h3>
 <h4>Account Demo</h4>
+Account ID:
+<select data-bind="options:Accounts, optionsText:'Name', optionsValue:'Id'">
+    
+</select>
+
+<hr/>
 Id: <span data-bind="text: Id"></span><br/>
 Name: <span data-bind="text: Name"></span><br />
 Balance: <span data-bind="text: Balance"></span><br />
@@ -22,3 +28,9 @@ Amount: <input type="text" id="txtAmount" />
 <input type="button" id="btnDeposit" value="Deposit" />
 <hr/>
 New Balance: <input type="text" data-bind="value: Balance"/>
+<hr />
+New Id: <input type="text" id="txtNewId" /><br/>
+New Name:<input type="text" id="txtNewName" /><br/>
+New Balance:<input type="text" id="txtNewBalance"/><br/>
+<input type="button" id="btnNewAccount" value="Add Account" />
+<input type="button" id="btnRemoveAccount" value="Remove Account" />

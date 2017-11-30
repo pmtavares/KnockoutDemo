@@ -24,7 +24,10 @@ function AccountViewModel(acc)
     this.Id = acc.Id;
     this.Name = acc.Name;
     this.Balance = ko.observable(acc.Balance);
-
+    var a1 = new Account(1, "A1", 1000)
+    var a2 = new Account(2, "A2", 2000)
+    var a3 = new Account(3, "A3", 3000)
+    this.Accounts = ko.observableArray([a1, a2, a3])
 }
 
 var accViewModel = new AccountViewModel(acc);
