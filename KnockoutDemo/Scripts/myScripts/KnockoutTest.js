@@ -21,6 +21,7 @@ var acc = new Account(1, "A1", 1000);
 //View Model
 function AccountViewModel(acc)
 {
+    var self = this;
     this.Id = acc.Id;
     this.Name = acc.Name;
     this.Balance = ko.observable(acc.Balance);
@@ -29,6 +30,14 @@ function AccountViewModel(acc)
     var a3 = new Account(3, "A3", 3000)
     this.Accounts = ko.observableArray([a1, a2, a3])
     this.SelectedAccountIndex = ko.observable(0);
+    this.TotalBalance = ko.computed(function () {
+        var total = 0;
+        for (var i = 0; i < self.Accounts().length; i++) {
+            
+            total += Number(self.Accounts()[i].Balance);
+        }
+        return total;
+    });
 }
 
 var accViewModel = new AccountViewModel(acc);

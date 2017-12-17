@@ -16,7 +16,8 @@
 <h4>Account Demo</h4>
 Account ID:
 <select id = "ddListAccount" data-bind="options:Accounts, optionsText:'Name', optionsValue:'Id'"></select>
-Total Accounts: <span data-bind="text: Accounts().length"></span>
+Total Accounts: <span data-bind="text: Accounts().length"></span><br/>
+Total Balances: <span data-bind="text: TotalBalance()"></span>
 <hr/>
 <h3>Selected Account Details</h3>
 Id: <span data-bind="text: Accounts()[SelectedAccountIndex()].Id"></span><br/>
