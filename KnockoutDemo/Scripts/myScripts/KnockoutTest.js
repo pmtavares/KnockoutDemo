@@ -28,6 +28,7 @@ function AccountViewModel(acc)
     var a2 = new Account(2, "A2", 2000)
     var a3 = new Account(3, "A3", 3000)
     this.Accounts = ko.observableArray([a1, a2, a3])
+    this.SelectedAccountIndex = ko.observable(0);
 }
 
 var accViewModel = new AccountViewModel(acc);

@@ -21,6 +21,11 @@ $(function () {
         
         accViewModel.Accounts.pop();
         alert('Removed');
+    }); 
+
+    $("#ddListAccount").change(function () {
+        var selId = $("#ddListAccount").val() - 1;
+        accViewModel.SelectedAccountIndex(selId);
     });
 });
 

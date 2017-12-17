@@ -15,14 +15,13 @@
 <h3>Part 2</h3>
 <h4>Account Demo</h4>
 Account ID:
-<select data-bind="options:Accounts, optionsText:'Name', optionsValue:'Id'">
-    
-</select>
-
+<select id = "ddListAccount" data-bind="options:Accounts, optionsText:'Name', optionsValue:'Id'"></select>
+Total Accounts: <span data-bind="text: Accounts().length"></span>
 <hr/>
-Id: <span data-bind="text: Id"></span><br/>
-Name: <span data-bind="text: Name"></span><br />
-Balance: <span data-bind="text: Balance"></span><br />
+<h3>Selected Account Details</h3>
+Id: <span data-bind="text: Accounts()[SelectedAccountIndex()].Id"></span><br/>
+Name: <span data-bind="text:  Accounts()[SelectedAccountIndex()].Name"></span><br />
+Balance: <span data-bind="text:  Accounts()[SelectedAccountIndex()].Balance"></span><br />
 <input type="button" id="btnShowDetails" value="Show Details" />
 Amount: <input type="text" id="txtAmount" />
 <input type="button" id="btnDeposit" value="Deposit" />
