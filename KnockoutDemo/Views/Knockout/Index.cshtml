@@ -34,3 +34,47 @@ New Name:<input type="text" id="txtNewName" /><br/>
 New Balance:<input type="text" id="txtNewBalance"/><br/>
 <input type="button" id="btnNewAccount" value="Add Account" />
 <input type="button" id="btnRemoveAccount" value="Remove Account" />
+
+<hr/>
+<input type="checkbox" name="showSection" data-bind="checked: showHideSection"/> Show / Hide
+<div data-bind="if:showHideSection " id="sectionDiv">
+    This is a block
+</div>
+<div data-bind="visible:showHideSection " id="sectionDiv2">
+    This is a block 2
+</div>
+
+<button onclick="alert(document.getElementById('sectionDiv').innerHTML)">Show div</button>
+<button onclick="alert(document.getElementById('sectionDiv2').innerHTML)">Show div2</button>
+<div>
+    <ul>
+        <li>
+            This item always appear
+        </li>
+        <!--ko if: showHideSection-->
+        <li>
+            This appear / disappear dynamically
+        </li>
+        <!--/ko -->
+    </ul>
+
+</div>
+<hr/>
+<div data-bind="with: Phone">
+    Home Phone: <span data-bind="text: home"></span>
+    Office Phone: <span data-bind="text: office"></span>
+</div>
+
+<hr/>
+<ul data-bind="foreach : Colors">
+    <li data-bind="text: $data"></li>
+
+</ul>
+<table data-bind="foreach: Accounts2">
+    <tr>
+       <td data-bind="text: Id"></td>
+        <td data-bind="text: Name"></td>
+        <td data-bind="text: Balance"></td>
+    </tr>
+
+</table>

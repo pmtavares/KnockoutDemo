@@ -25,11 +25,12 @@ function AccountViewModel(acc)
     this.Id = acc.Id;
     this.Name = acc.Name;
     this.Balance = ko.observable(acc.Balance);
-    var a1 = new Account(1, "A1", 1000)
-    var a2 = new Account(2, "A2", 2000)
-    var a3 = new Account(3, "A3", 3000)
-    this.Accounts = ko.observableArray([a1, a2, a3])
-    this.SelectedAccountIndex = ko.observable(0);
+    var a1 = new Account(1, "A1", 1000);
+    var a2 = new Account(2, "A2", 2000);
+    var a3 = new Account(3, "A3", 3000);
+    var a4 = new Account(3, "A3", 3000);
+    self.Accounts = ko.observableArray([a1, a2, a3])
+    self.SelectedAccountIndex = ko.observable(0);
     this.TotalBalance = ko.computed(function () {
         var total = 0;
         for (var i = 0; i < self.Accounts().length; i++) {
@@ -38,6 +39,11 @@ function AccountViewModel(acc)
         }
         return total;
     });
+
+    self.showHideSection = ko.observable(true);
+    self.Phone = { home: 123456, office: 654321 };
+    self.Colors = ko.observable(["red", "blue", "green"]);
+    self.Accounts2 = ko.observableArray([a1, a2,a4])
 }
 
 var accViewModel = new AccountViewModel(acc);
