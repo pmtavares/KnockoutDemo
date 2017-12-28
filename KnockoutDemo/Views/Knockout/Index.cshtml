@@ -12,6 +12,14 @@
 
     <p>Hello <span data-bind="text: FullName"></span></p>
 *@
+<style>
+    .selected
+    {
+        color: red;
+    }
+
+</style>
+
 <h3>Part 2</h3>
 <h4>Account Demo</h4>
 Account ID:
@@ -27,7 +35,7 @@ Balance: <span data-bind="text:  Accounts()[SelectedAccountIndex()].Balance"></s
 Amount: <input type="text" id="txtAmount" />
 <input type="button" id="btnDeposit" value="Deposit" />
 <hr/>
-New Balance: <input type="text" data-bind="value: Balance"/>
+New Balance: <input type="text" data-bind="value: Balance()"/>
 <hr />
 New Id: <input type="text" id="txtNewId" /><br/>
 New Name:<input type="text" id="txtNewName" /><br/>
@@ -70,11 +78,23 @@ New Balance:<input type="text" id="txtNewBalance"/><br/>
     <li data-bind="text: $data"></li>
 
 </ul>
-<table data-bind="foreach: Accounts2">
-    <tr>
-       <td data-bind="text: Id"></td>
-        <td data-bind="text: Name"></td>
-        <td data-bind="text: Balance"></td>
+<table data-bind="foreach: {data: Accounts2, as: 'Account3'}">
+    <tr style="cursor:pointer" data-bind="click: $parent.SelecteAccount, css:{selected:(Account3.Id == ($parent.SelectedAccount() == null?-1:$parent.SelectedAccount().Id))} ">
+       <td data-bind="text: Account3.Id"></td>
+        <td data-bind="text: Account3.Name"></td>
+        <td data-bind="text: Account3.Balance"></td>
+        <td>
+            <ul data-bind="foreach:{data: Deposits, as: 'Amount'}">
+                <li data-bind="text: (Account3.Name + ' Deposited ' + Amount)"></li>
+            </ul>
+
+        </td>
+        <td data-bind="text: $parent.Count()"></td>
+        <td><button data-bind="click: $parent.SelecteAccount, clickBubble: false">Select</button></td>
+        <td><button data-bind="click: $parent.DeleteAccount, clickBubble: false">Delete</button></td>
+
     </tr>
 
 </table>
+<input type="text" data-bind="value: AmountToDeposit"/>
+<button data-bind="click: Deposit">Deposit</button>
